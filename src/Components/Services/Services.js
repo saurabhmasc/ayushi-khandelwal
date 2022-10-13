@@ -3,7 +3,7 @@ import { useInView } from 'react-intersection-observer';
 import { Link } from "react-router-dom";
 import { ServiceModel } from "../../Models/ServiceModel"
 import serviceLogo from "../../img/logos/logo-1.jpg";
-import "./Services.css";
+import "./Services.scss";
 
 function Services() {
     let services = [
@@ -16,6 +16,7 @@ function Services() {
     
     const ref = useRef();
     const options = {
+        fallbackInView: true,
         root: null,
         rootMargin: "0px",
         threshold: 0.5
@@ -34,99 +35,24 @@ function Services() {
     );
 
     return (
-        <div className="container-fluid services py-5">
-            <div className="d-flex">
-                {services.length===0? "No Todos to display": 
-                    services.map((service)=>{
-                        //return(<TodoItems key={todo.sno.toString()} todo={todo} onDelete={props.onDelete}/>)
-                        return(
-                            <div className={`${'card fade-in'} ${inView ? 'appear' : ''}`} ref={setServiceRef}>
-                            <img src={serviceLogo} className="card-img-top" alt="..."/>
+        <div className="container-fluid services d-flex flex-wrap justify-content-center align-items-center my-5">
+            {services.length===0? "No Todos to display": 
+                services.map((service, index)=>{
+                    //return(<TodoItems key={todo.sno.toString()} todo={todo} onDelete={props.onDelete}/>)
+                    return(
+                        <div key={index} ref={setServiceRef} className={`${'card rounded-0 flex-grow-1 shadow border-0 p-4 w-100 fade-in'}  ${inView ? 'appear' : ''}`} style={{transitionDelay: '0.' + index + 's'}}>
                             <div className="card-body">
                                 <h5 className="card-title">{service.name}</h5>
                                 <p className="card-text">{service.description}</p>
                                 <Link to={service.pageLink} className="btn btn-primary">View more</Link>
                             </div>
-                            </div>
-                        )
-                    })
+                            <img src={serviceLogo} className="card-img-bottom" alt="..."/>
+                        </div>
+                    )
+                })
                 }
-            </div>
         </div>
     );
-
-    /*
-    useEffect(() => {
-        const observer = new IntersectionObserver(callbackFuntion, options);
-        serviceCardRef.forEach(card => {
-            observer.observe(card);
-        });
-        return () => {
-            //do nothing
-        }
-    }, [serviceCardRef, options]);
-
-    const callbackFuntion = (entries) => {
-        
-        entries.forEach(entry => { 
-            entry.target.classList.toggle("appear", entry.isIntersecting);
-        });
-    }
-    */
-
-    /*
-    return (
-        <div className="container-fluid services py-5">
-            <div className="d-flex">
-
-                <div className={`${'card fade-in'} ${logoDesignServiceIsVisible ? 'appear' : ''}`} ref={logoDesignServiceRef}>
-                    <img src={serviceLogo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">LOGO DESIGN</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-primary">Go somewhere</Link>
-                    </div>
-                </div>
-
-                <div className={`${'card fade-in'} ${visitingCardServiceRefIsVisible ? 'appear' : ''}`} ref={visitingCardServiceRef}>
-                    <img src={serviceLogo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">VISITING CARD</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-primary">Go somewhere</Link>
-                    </div>
-                </div>
-                
-                <div className={`${'card fade-in'} ${socialMediaPostServiceIsVisible ? 'appear' : ''}`} ref={socialMediaPostServiceRef}>
-                    <img src={serviceLogo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">Social Media Post</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-primary">Go somewhere</Link>
-                    </div>
-                </div>
-
-                <div className={`${'card fade-in'} ${videoServiceIsVisible ? 'appear' : ''}`} ref={videoServiceRef}>
-                    <img src={serviceLogo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">VIDEO SERVICE</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-primary">Go somewhere</Link>
-                    </div>
-                </div>
-
-                <div className={`${'card fade-in'} ${packagingServiceIsVisible ? 'appear' : ''}`} ref={packagingServiceRef}>
-                    <img src={serviceLogo} className="card-img-top" alt="..."/>
-                    <div className="card-body">
-                        <h5 className="card-title">PACKAGING DESIGN</h5>
-                        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <Link to="#" className="btn btn-primary">Go somewhere</Link>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    )*/
 }
 
 export default Services

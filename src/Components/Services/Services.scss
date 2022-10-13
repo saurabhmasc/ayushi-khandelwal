@@ -1,0 +1,14 @@
+.services .card {
+    max-width: 300px;
+}
+
+.fade-in{
+    opacity: 0;
+    transform: translateY(0px);
+    transition: opacity 0.5s, transform 1s;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(-100px);
+}
