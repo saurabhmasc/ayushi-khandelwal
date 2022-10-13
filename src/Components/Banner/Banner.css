@@ -1,0 +1,56 @@
+.left-banner, .right-banner {
+    width: calc(50% - 80px);    
+    font-size: 3rem;
+    position: relative;
+    color: #FFF;
+    background: #654796;
+    height: 300px;
+}
+.left-banner:after {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #654796;;
+    transform-origin: bottom left;
+    -ms-transform: skew(-30deg, 0deg);
+    -webkit-transform: skew(-30deg, 0deg);
+    transform: skew(-25deg, 0deg);
+}
+
+.right-banner:before {
+    content: " ";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #654796;;
+    transform-origin: top left;
+    -ms-transform: skew(-30deg, 0deg);
+    -webkit-transform: skew(-30deg, 0deg);
+    transform: skew(-25deg, 0deg);
+}
+
+.banner-fade-in-bottom, .banner-fade-in-top {
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+
+} 
+.banner-fade-in-bottom.appear, .banner-fade-in-top.appear {
+    opacity: 1;
+    transform: translateY(0%);
+}
+
+.left-banner {
+    transform: translateY(-85px);
+}
+.right-banner { 
+    transform: translateY(85px);
+}
