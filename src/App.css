@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .App {
   text-align: center;
 }
@@ -36,3 +37,8 @@
     transform: rotate(360deg);
   }
 }
+=======
+.gap {
+    height: 70vh;
+}
+>>>>>>> b2bd3919128e413b962d5149ba46516d5891ec05

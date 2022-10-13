@@ -1,0 +1,13 @@
+.services .card.fade-in {
+    transform: translateY(50px);
+}
+
+.services .card.fade-in{
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+
+} 
+.services .card.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0%);
+}
